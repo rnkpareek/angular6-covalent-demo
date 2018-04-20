@@ -1,0 +1,108 @@
+<td-layout>
+  <td-navigation-drawer flex sidenavTitle="Demo" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+    <mat-nav-list>
+      <!-- <a *ngFor="let item of routes" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a> -->
+       <a routerLink="/dashboard" routerLinkActive="active"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-home"></span> Dashboard
+        </button></a><br>
+        <br>
+         <a routerLink="/regi" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-plus"></span> Register
+        </button></a><br>
+         <br>
+        <a routerLink="/Tables" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-tasks"></span> Table-1
+        </button></a><br>
+         <br>
+        <a routerLink="/Register" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-tasks"></span> Table-2
+        </button></a><br>
+         <br>
+      <a routerLink="/Login" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-user"></span> Logout
+        </button></a><br>
+         <br>
+    </mat-nav-list>
+    <div td-navigation-drawer-menu>
+      <mat-nav-list>
+        <a *ngFor="let item of usermenu" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      </mat-nav-list>
+    </div>
+  </td-navigation-drawer>
+  <td-layout-nav-list logo="assets:teradata" toolbarTitle="Demo" navigationRoute="/" opened="true" mode="side">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+     <div td-sidenav-content>
+      Sidenav content here
+    </div>
+    <div td-toolbar-content>
+            <button mat-button tdLayoutNavListToggle>
+        Toggle
+      </button>
+<a routerLink="/dashboard" routerLinkActive="active"><button mat-raised-button [@tdRotate]="triggerState" (click)="triggerState = !triggerState" color="accent">
+  Dashboard<mat-icon>mood</mat-icon>
+</button></a>
+       <!-- <a routerLink="/dashboard" routerLinkActive="active"><button mat-button >
+        Dashboard
+             </button></a> -->
+      <a routerLink="/regi" routerLinkActive="active"><button mat-button >
+        Register
+      </button></a>
+      <a routerLink="/Register" routerLinkActive="active"><button mat-button >
+        Table-1
+      </button></a>
+      <a routerLink="/Tables" routerLinkActive="active"><button mat-button >
+        Table-2
+      </button></a>
+       <a routerLink="/Login" routerLinkActive="active"><button mat-button >
+        Signout
+      </button></a>
+
+    </div>
+
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="progress">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.progress}}% </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Color Column -->
+    <ng-container matColumnDef="color">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+  </td-layout-nav-list>
+</td-layout>
+
+<router-outlet></router-outlet>

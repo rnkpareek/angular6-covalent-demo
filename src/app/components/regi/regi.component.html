@@ -1,0 +1,141 @@
+<td-layout>
+  <td-navigation-drawer flex sidenavTitle="Demo" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+    <mat-nav-list>
+      <!-- <a *ngFor="let item of routes" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a> -->
+      <a routerLink="/dashboard" routerLinkActive="active"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-home"></span> Dashboard
+        </button></a><br>
+        <br>
+         <a routerLink="/regi" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-plus"></span> Register
+        </button></a><br>
+         <br>
+        <a routerLink="/Tables" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-tasks"></span> Table-1
+        </button></a><br>
+         <br>
+        <a routerLink="/Register" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-tasks"></span> Table-2
+        </button></a><br>
+         <br>
+      <a routerLink="/Login" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-user"></span> Logout
+        </button></a><br>
+         <br>
+    </mat-nav-list>
+    <div td-navigation-drawer-menu>
+      <mat-nav-list>
+        <a *ngFor="let item of usermenu" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      </mat-nav-list>
+    </div>
+  </td-navigation-drawer>
+  <td-layout-nav-list logo="assets:teradata" toolbarTitle="Demo" navigationRoute="/" opened="true" mode="side">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+   <div td-sidenav-content>
+      Sidenav content here
+    </div>
+    <div td-toolbar-content>
+      <button mat-button tdLayoutNavListToggle>
+        Toggle
+      </button>
+<a routerLink="/dashboard" routerLinkActive="active"><button mat-raised-button [@tdRotate]="triggerState" (click)="triggerState = !triggerState" color="accent">
+  Dashboard<mat-icon>mood</mat-icon>
+</button></a>
+       <!-- <a routerLink="/dashboard" routerLinkActive="active"><button mat-button >
+        Dashboard
+             </button></a> -->
+      <a routerLink="/regi" routerLinkActive="active"><button mat-button >
+        Register
+      </button></a>
+      <a routerLink="/Register" routerLinkActive="active"><button mat-button >
+        Table-1
+      </button></a>
+      <a routerLink="/Tables" routerLinkActive="active"><button mat-button >
+        Table-2
+      </button></a>
+       <a routerLink="/Login" routerLinkActive="active"><button mat-button >
+        Signout
+      </button></a>
+
+
+    </div>
+
+   <div *tdLoading="'overlayStarSyntax'; mode:'indeterminate'; type:'circle'; strategy:'overlay'; color:'accent'">
+  <!-- <div layout="row">
+    <mat-form-field flex>
+      <input matInput [(ngModel)]="overlayDemo.name" placeholder="Name"/>
+    </mat-form-field>
+  </div>
+  <div layout="row">
+    <mat-form-field flex>
+      <textarea matInput [(ngModel)]="overlayDemo.description" placeholder="Age" rows="4"></textarea>
+    </mat-form-field>
+  </div>
+    <div layout="row">
+    <mat-form-field flex>
+      <textarea matInput [(ngModel)]="overlayDemo.description" placeholder="Description" rows="4"></textarea>
+    </mat-form-field>
+  </div>
+    <div layout="row">
+    <mat-form-field flex>
+      <textarea matInput [(ngModel)]="overlayDemo.description" placeholder="Mail" rows="4"></textarea>
+    </mat-form-field>
+  </div> -->
+  <div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Name">
+  </mat-form-field>
+
+<mat-form-field>
+    <input matInput placeholder="Enter your email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+<mat-form-field>
+    <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Age"></textarea>
+  </mat-form-field>
+  <mat-form-field hintLabel="Max 10 characters">
+    <input matInput #input maxlength="10" placeholder="Phone no.
+    ">
+    <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select">
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+</div>
+
+<div layout="row">
+  <button mat-button color="primary" (click)="toggleOverlayStarSyntax()" class="text-upper">Save</button>
+</div>
+  </td-layout-nav-list>
+
+
+
+</td-layout>
+
+
+<!-- <td-chips [items]="filteredStrings"
+      [(ngModel)]="stringsModel"
+      placeholder="Type here"
+      (add)="handleAdd($event)"
+      (remove)="handleRemove($event)"
+      (inputChange)="filterStrings($event)"
+      (chipBlur)="handleChipBlur($event)"
+      (chipFocus)="handleChipFocus($event)"
+      requireMatch>
+</td-chips> -->
+
+<router-outlet></router-outlet>
+
+

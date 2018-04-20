@@ -1,0 +1,112 @@
+<td-layout>
+  <td-navigation-drawer flex sidenavTitle="Demo" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+    <mat-nav-list>
+      <!-- <a *ngFor="let item of routes" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a> -->
+      <a routerLink="/dashboard" routerLinkActive="active"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-home"></span> Dashboard
+        </button></a><br>
+        <br>
+         <a routerLink="/regi" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-plus"></span> Register
+        </button></a><br>
+         <br>
+        <a routerLink="/Tables" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-tasks"></span> Table-1
+        </button></a><br>
+         <br>
+        <a routerLink="/Register" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-tasks"></span> Table-2
+        </button></a><br>
+         <br>
+      <a routerLink="/Login" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-user"></span> Logout
+        </button></a><br>
+         <br>
+      <!-- <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a><br>>
+      <a routerLink="/Register" routerLinkActive="active">Tables</a><br>
+       <a routerLink="/Tables" routerLinkActive="active">Table-1</a><br>
+        <a routerLink="/regi" routerLinkActive="active">Table-2</a><br>
+         <a routerLink="/Login" routerLinkActive="active"></a><br> -->
+    </mat-nav-list>
+    <div td-navigation-drawer-menu>
+      <mat-nav-list>
+        <a *ngFor="let item of usermenu" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+
+      </mat-nav-list>
+    </div>
+  </td-navigation-drawer>
+  <td-layout-nav-list logo="" toolbarTitle="Demo" navigationRoute="/" opened="true" mode="side">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div td-toolbar-content>
+      <button mat-button tdLayoutNavListToggle>
+        Toggle
+      </button>
+<a routerLink="/dashboard" routerLinkActive="active"><button mat-raised-button [@tdRotate]="triggerState" (click)="triggerState = !triggerState" color="accent">
+  Dashboard<mat-icon>mood</mat-icon>
+</button></a>
+       <!-- <a routerLink="/dashboard" routerLinkActive="active"><button mat-button >
+        Dashboard
+             </button></a> -->
+      <a routerLink="/regi" routerLinkActive="active"><button mat-button >
+        Register
+      </button></a>
+      <a routerLink="/Register" routerLinkActive="active"><button mat-button >
+        Table-1
+      </button></a>
+      <a routerLink="/Tables" routerLinkActive="active"><button mat-button >
+        Table-2
+      </button></a>
+       <a routerLink="/Login" routerLinkActive="active"><button mat-button >
+        Signout
+      </button></a>
+
+      </div>
+
+     <!--  <div>
+        <div style="display: block">
+          <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+        </div>
+        <button (click)="randomize()">Update</button>
+      </div>
+
+      <br>
+      <br>
+      <h1 style="color:red">Graphs are here </h1>
+      <br> -->
+
+<div class="col-md-6">
+
+    <canvas baseChart
+                [data]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <div class="col-md-6">
+    <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+  </div>
+  <div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
+    <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
+  </div>
+
+
+  </td-layout-nav-list>
+</td-layout>
+<router-outlet></router-outlet>

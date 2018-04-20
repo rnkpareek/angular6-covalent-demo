@@ -1,0 +1,131 @@
+<td-layout>
+  <td-navigation-drawer flex sidenavTitle="Demo" logo="assets:teradata" name="Firstname Lastname" email="firstname.lastname@company.com">
+    <mat-nav-list>
+      <!-- <a *ngFor="let item of routes" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a> -->
+             <a routerLink="/dashboard" routerLinkActive="active"><button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-home"></span> Dashboard
+        </button></a><br>
+        <br>
+         <a routerLink="/regi" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-plus"></span> Register
+        </button></a><br>
+         <br>
+        <a routerLink="/Tables" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-tasks"></span> Table-1
+        </button></a><br>
+         <br>
+        <a routerLink="/Register" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-tasks"></span> Table-2
+        </button></a><br>
+         <br>
+      <a routerLink="/Login" routerLinkActive="active"> <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-user"></span> Logout
+        </button></a><br>
+         <br>
+    </mat-nav-list>
+    <div td-navigation-drawer-menu>
+      <mat-nav-list>
+        <a *ngFor="let item of usermenu" mat-list-item><mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      </mat-nav-list>
+    </div>
+  </td-navigation-drawer>
+  <td-layout-nav-list logo="assets:teradata" toolbarTitle="Demo" navigationRoute="/" opened="true" mode="side">
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div td-sidenav-content>
+      Sidenav content here
+    </div>
+    <div td-toolbar-content>
+            <button mat-button tdLayoutNavListToggle>
+        Toggle
+      </button>
+<a routerLink="/dashboard" routerLinkActive="active"><button mat-raised-button [@tdRotate]="triggerState" (click)="triggerState = !triggerState" color="accent">
+  Dashboard<mat-icon>mood</mat-icon>
+</button></a>
+       <!-- <a routerLink="/dashboard" routerLinkActive="active"><button mat-button >
+        Dashboard
+             </button></a> -->
+      <a routerLink="/regi" routerLinkActive="active"><button mat-button >
+        Register
+      </button></a>
+      <a routerLink="/Register" routerLinkActive="active"><button mat-button >
+        Table-1
+      </button></a>
+      <a routerLink="/Tables" routerLinkActive="active"><button mat-button >
+        Table-2
+      </button></a>
+       <a routerLink="/Login" routerLinkActive="active"><button mat-button >
+        Signout
+      </button></a>
+
+    </div>
+   <table td-data-table>
+ <!-- <thead>
+    <tr td-data-table-column-row>
+      <th td-data-table-column
+          *ngFor="let column of columns"
+          >
+        {{column.label}}
+      </th>
+      <th td-data-table-column>
+        <mat-icon>comment</mat-icon>
+        <span>Comments</span>
+      </th>
+    </tr>
+  </thead> -->
+ <!--  <tbody>
+   <tr td-data-table-row *ngFor="let row of basicData">
+     <td td-data-table-cell *ngFor="let column of columns">
+       {{column.format ? column.format(row[column.name]) : row[column.name]}}
+     </td>
+     <td td-data-table-cell (click)="openPrompt(row, 'comments')">
+       <button mat-button [class.mat-accent]="!row['comments']">{{row['comments'] || 'Add Comment'}}</button>
+     </td>
+    <button (click)="openConfirm()" class="btn btn-danger">Delete</button>
+   </tr>
+ </tbody> -->
+
+ <div class="container">
+     <div class="row">
+         <table  class="table table-bordered">
+             <thead class="thead-inverse">
+             <tr>
+                 <th class="text-center">ID</th>
+                 <th class="text-center">Name</th>
+                 <th class="text-center">User name</th>
+                 <th class="text-center">Email</th>
+                  <th class="text-center">Phone</th>
+                 <th class="text-center">Website</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr *ngFor="let post of _postsArray">
+                 <td class="text-center" style="width: 15px;">{{post.id}}</td>
+                 <td class="text-center" style="width: 15px;">{{post.name}}</td>
+                 <td class="text-center" style="width: 200px;">{{post.username}}</td>
+                 <td class="text-center" style="width: 15px;">{{post.email}}</td>
+                 <td class="text-center" style="width: 200px;">{{post.phone}}</td>
+                 <td class="text-center" style="width: 200px;">{{post.website}}</td>
+             </tr>
+             </tbody>
+         </table>
+     </div>
+ </div>
+
+</table>
+  </td-layout-nav-list>
+</td-layout>
+
+<td-virtual-scroll-container [style.height.px]="400" [data]="data" [trackBy]="trackByFn">
+  <ng-template let-row="row"
+               let-index="index"
+               let-first="first"
+               let-last="last"
+               let-odd="odd"
+               let-even="even"
+               tdVirtualScrollRow>
+    {{row}}
+  </ng-template>
+</td-virtual-scroll-container>
+<router-outlet></router-outlet>
